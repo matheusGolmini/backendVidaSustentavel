@@ -1,0 +1,42 @@
+timeout: 5m
+
+steps:
+  - name: node:carbon
+    entrypoint: yarn
+    args:
+      - install
+
+  - name: cloudbuilders/cc-test-reporter
+    args:
+      - before-build
+    env:
+      - GIT_COMMIT_SHA=$COMMIT_SHA
+      - GIT_BRANCH=$BRANCH_NAME
+      - CC_TEST_REPORTER_ID=
+
+  - name: node:carbon
+    entrypoint: yarn
+    args:
+      - test:coverage
+
+  - name: cloudbuilders/cc-test-reporter
+    args:
+      - after-build
+      - --coverage-input-type
+      - lcov
+    env:
+      - GIT_COMMIT_SHA=$COMMIT_SHA
+      - GIT_BRANCH=$BRANCH_NAME
+      - CC_TEST_REPORTER_ID=
+
+  - name: node:carbon
+    entrypoint: yarn
+    args:
+      - build
+
+  - name: gcr.io/cloud-builders/gcloud
+    entrypoint: .cloudbuild/deploy.sh
+    args:
+      - $BRANCH_NAME
+      - $COMMIT_SHA
+      - $REPO_NAME
