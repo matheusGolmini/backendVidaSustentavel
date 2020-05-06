@@ -5,7 +5,7 @@ export interface ISkill {
 }
 
 export class Skill {
-  private skill: ISkill;
+  skill: ISkill;
 
   constructor(skill: ISkill) {
     this.skill = skill;
