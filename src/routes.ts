@@ -12,7 +12,8 @@ routes.get("/test", (req: express.Request, res: express.Response) => {
 });
 
 routes.post("/users", Controller.controllerCreateUser);
-routes.get("/users", Controller.controllerGetUser);
+routes.get("/users", Controller.controllerGetListUser);
+routes.get("/users/:id", Controller.controllerGetUser);
 
 routes.post("/skills", Controller.controllerCreateSkill);
 

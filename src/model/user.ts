@@ -25,4 +25,11 @@ export class User {
     const users = await connection("users").select("*");
     return users;
   }
+
+  async getId(id: string) {
+    const user = await connection("users")
+      .where("id", id)
+      .select("*");
+    return user;
+  }
 }

@@ -5,7 +5,6 @@ export function controllerCreateUser(
   req: express.Request,
   res: express.Response
 ) {
-  console.log(req.body);
   const { name, email, password } = req.body;
 
   new User().add({
@@ -16,11 +15,19 @@ export function controllerCreateUser(
   res.status(200).send("Skill criada com sucesso!");
 }
 
-export async function controllerGetUser(
+export async function controllerGetListUser(
   req: express.Request,
   res: express.Response
 ) {
   const users = await new User().getList();
-  console.log(users);
   return res.json({ users });
+}
+
+export async function controllerGetUser(
+  req: express.Request,
+  res: express.Response
+) {
+  const { id } = req.params;
+  const user = await new User().getId(id);
+  return res.json({ user });
 }
