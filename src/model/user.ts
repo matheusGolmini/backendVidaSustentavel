@@ -14,4 +14,8 @@ export class User {
   constructor(user: IUser) {
     this.user = user;
   }
+
+  add() {}
+
+  edit() {}
 }

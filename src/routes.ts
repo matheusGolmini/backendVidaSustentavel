@@ -1,4 +1,5 @@
 import express from "express";
+import * as Controller from "./controller";
 
 const routes = express.Router();
 
@@ -10,7 +11,9 @@ routes.get("/test", (req: express.Request, res: express.Response) => {
   });
 });
 
-routes.post("/users");
+routes.post("/users", Controller.controllerCreateUser);
 routes.get("/users");
+
+routes.post("/skills", Controller.controllerCreateSkill);
 
 export { routes };
