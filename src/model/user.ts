@@ -1,21 +1,28 @@
-import { ISkill } from "./skill";
+// import { ISkill } from "./skill";
+import connection from "../database/connection";
 
 interface IUser {
   name: string;
   password: string;
   email: string;
-  isAdmin: boolean;
-  skill: ISkill[];
+  // isAdmin: boolean;
+  // skill: ISkill[];
 }
 
 export class User {
-  user: IUser;
+  constructor() {}
 
-  constructor(user: IUser) {
-    this.user = user;
+  async add(user: IUser) {
+    const aux = await connection("users").insert({
+      name: user.name,
+      email: user.email,
+      password: user.password
+    });
+    console.log(aux);
   }
 
-  add() {}
-
-  edit() {}
+  async getList() {
+    const users = await connection("users").select("*");
+    return users;
+  }
 }

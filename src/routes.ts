@@ -12,7 +12,7 @@ routes.get("/test", (req: express.Request, res: express.Response) => {
 });
 
 routes.post("/users", Controller.controllerCreateUser);
-routes.get("/users");
+routes.get("/users", Controller.controllerGetUser);
 
 routes.post("/skills", Controller.controllerCreateSkill);
 

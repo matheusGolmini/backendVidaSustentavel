@@ -1,5 +1,5 @@
 {
-  "name": "typescript-api-template",
+  "name": "backend",
   "version": "0.0.0",
   "description": "Typescript + Babel 7 + Jest + Lint template",
   "main": "lib/index.js",
