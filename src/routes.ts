@@ -17,4 +17,6 @@ routes.get("/users/:id", Controller.controllerGetUser);
 
 routes.post("/skills", Controller.controllerCreateSkill);
 
+routes.post("/login", Controller.controllerLogin);
+
 export { routes };

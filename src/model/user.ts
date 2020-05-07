@@ -1,7 +1,7 @@
 // import { ISkill } from "./skill";
 import connection from "../database/connection";
 
-interface IUser {
+export interface IUser {
   name: string;
   password: string;
   email: string;
@@ -31,5 +31,14 @@ export class User {
       .where("id", id)
       .select("*");
     return user;
+  }
+
+  async getLogin(email: string, password: string) {
+    const user = await connection("users")
+      .limit(1)
+      .where("email", email, )
+      .where('password', password)
+      .select("*");
+    return user[0];
   }
 }
