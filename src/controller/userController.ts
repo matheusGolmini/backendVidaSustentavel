@@ -6,7 +6,7 @@ export function controllerCreateUser(
   res: express.Response
 ) {
   const { name, email, password } = req.body;
-
+  console.log(req.body)
   new User().add({
     name,
     email,
