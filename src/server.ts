@@ -11,10 +11,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(routes);
 
-const port = 3005;
+const port = 3333;
 
-if (typeof jest === "undefined") {
-  app.listen(port, () => {
-    console.log(Date(), "Servidor rodando na porta:", port);
-  });
-}
+
+app.listen(port, () => {
+  console.log(Date(), "Servidor rodando na porta:", port);
+});
+

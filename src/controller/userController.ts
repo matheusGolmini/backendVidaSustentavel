@@ -12,7 +12,7 @@ export function controllerCreateUser(
     email,
     password
   });
-  res.status(200).send("Skill criada com sucesso!");
+  res.status(200).send("Usuário criada com sucesso!");
 }
 
 export async function controllerGetListUser(
