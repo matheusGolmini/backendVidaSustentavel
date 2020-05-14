@@ -5,8 +5,8 @@ export interface IUser {
   name: string;
   password: string;
   email: string;
-  // isAdmin: boolean;
-  // skill: ISkill[];
+  is_admin: boolean;
+  sign_in_date: string
 }
 
 export class User {
@@ -16,7 +16,9 @@ export class User {
     const aux = await connection("users").insert({
       name: user.name,
       email: user.email,
-      password: user.password
+      password: user.password,
+      is_admin: user.is_admin,
+      sign_in_date: user.sign_in_date
     });
     console.log(aux);
   }

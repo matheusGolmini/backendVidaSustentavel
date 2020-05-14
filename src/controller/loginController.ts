@@ -11,6 +11,7 @@ export async function controllerLogin(
     const {email, password} = req.body;
     console.log(email, password)
     const user = await new User().getLogin(email, password);
+    console.log(user);
     res.json(validateUser(user))
     // res.send("Achou o cara na base")
 }
