@@ -1,17 +1,16 @@
+import connection from "../database/connection";
+
 export interface ISkill {
-  skillId: number;
   name: string;
-  experience: number;
 }
 
 export class Skill {
-  skill: ISkill;
+  constructor() {}
 
-  constructor(skill: ISkill) {
-    this.skill = skill;
+  async add(skill: ISkill) {
+    const aux = await connection("skills").insert({
+      name: skill.name
+    });
+    console.log(aux);
   }
-
-  add() {}
-
-  edit() {}
 }

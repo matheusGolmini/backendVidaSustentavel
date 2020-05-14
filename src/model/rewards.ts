@@ -1,15 +1,21 @@
-import { IDifficulty } from "./difficulty";
+import connection from "../database/connection";
 
 export interface IRewards {
-  experienceAmount: number;
-  skill: string;
-  difficulty: IDifficulty;
+  id_task: number;
+  id_skill: number;
+  status: string;
 }
 
 export class Rewards {
-  rewards: IRewards;
 
-  constructor(rewards: IRewards) {
-    this.rewards = rewards;
+  constructor() {}
+
+  async add(rewards: IRewards) {
+    const aux = await connection("skills").insert({
+      id_task: rewards.id_task,
+      id_skill: rewards.id_skill,
+      status: rewards.status
+    });
+    console.log(aux);
   }
 }
