@@ -5,14 +5,16 @@ export function controllerCreateUser(
   req: express.Request,
   res: express.Response
 ) {
-  const { name, email, password, is_admin,  sign_in_date } = req.body;
+  const { name, email, password } = req.body;
   console.log(req.body)
+  const isAdmin = false;
+  const signIndate = new Date().toString();
   new User().add({
     name,
     email,
     password,
-    is_admin,
-    sign_in_date
+    is_admin: isAdmin,
+    sign_in_date: signIndate
   });
   res.status(200).send("Usuário criada com sucesso!");
 }

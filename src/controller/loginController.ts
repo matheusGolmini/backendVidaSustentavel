@@ -13,5 +13,5 @@ export async function controllerLogin(
     const user = await new User().getLogin(email, password);
     console.log(user);
     res.json(validateUser(user))
-    // res.send("Achou o cara na base")
+ 
 }
